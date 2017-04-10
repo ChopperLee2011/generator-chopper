@@ -1,0 +1,51 @@
+{
+  "name": "generator-chopper",
+  "version": "0.1.0",
+  "description": "",
+  "main": "app/index.js",
+  "scripts": {
+    "pretest": "standard",
+    "test": "mocha --compilers js:babel-register --timeout 5000",
+    "build": "babel --optional runtime src -d app",
+    "postbuild": "npm test -s"
+  },
+  "author": "Chopper Lee <lihengpro@gmail.com>",
+  "license": "ISC",
+  "files": [
+    "app"
+  ],
+  "standard": {
+    "env": [
+      "node",
+      "es6",
+      "mocha"
+    ],
+    "ignore": [
+      "app"
+    ]
+  },
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "camelcase": "^4.1.0",
+    "generator-git-init": "^1.1.3",
+    "generator-license": "^5.1.0",
+    "generator-travis": "^1.4.0",
+    "yeoman-assert": "^3.0.0",
+    "yeoman-generator": "^1.1.1",
+    "yosay": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-core": "^6.24.0",
+    "babel-preset-latest": "^6.24.0",
+    "chai": "^3.5.0",
+    "dependency-check": "^2.8.0",
+    "fs-extra": "^2.1.2",
+    "github-changes": "^1.1.0",
+    "mocha": "^3.2.0",
+    "standard": "^10.0.1",
+    "yeoman-test": "^1.6.0"
+  }
+}
