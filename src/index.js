@@ -1,5 +1,5 @@
 import Generator from 'yeoman-generator'
-// import yosay from 'yosay'
+import yosay from 'yosay'
 import camelCase from 'camelcase'
 
 export default class extends Generator {
@@ -14,7 +14,7 @@ export default class extends Generator {
   }
 
   prompting () {
-    // console.log(yosay('Hello, and welcome to my generator!'))
+    console.log(yosay('Hello, and welcome to chopper!'))
     const prompts = [{
       name: 'name',
       message: 'Module name',
@@ -45,7 +45,15 @@ export default class extends Generator {
   }
 
   writing () {
-    const tpls = ['.babelrc', '.gitignore', '.editorconfig', 'package.json', 'README.md', 'test/index.test.js', 'src/index.js']
+    const dottpls = ['babelrc', 'gitignore', 'editorconfig']
+    const tpls = ['package.json', 'README.md', 'test/index.test.js', 'src/index.js']
+    dottpls.forEach(tpl => {
+      this.fs.copyTpl(
+        this.templatePath(tpl),
+        this.destinationPath(`.${tpl}`),
+        this.props
+      )
+    })
     tpls.forEach(tpl => {
       this.fs.copyTpl(
         this.templatePath(tpl),
@@ -56,7 +64,7 @@ export default class extends Generator {
   }
 
   install () {
-    this.installDependencies({npm: false, bower: false})
+    this.installDependencies({npm: true, bower: false})
   }
 
   end () {

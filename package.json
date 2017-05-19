@@ -1,8 +1,9 @@
 {
   "name": "generator-chopper",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "app/index.js",
+  "repository": "https://github.com/ChopperLee2011/generator-chopper",
   "scripts": {
     "pretest": "standard",
     "test": "mocha --compilers js:babel-register --timeout 5000",

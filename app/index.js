@@ -10,6 +10,10 @@ var _yeomanGenerator = require('yeoman-generator');
 
 var _yeomanGenerator2 = _interopRequireDefault(_yeomanGenerator);
 
+var _yosay = require('yosay');
+
+var _yosay2 = _interopRequireDefault(_yosay);
+
 var _camelcase = require('camelcase');
 
 var _camelcase2 = _interopRequireDefault(_camelcase);
@@ -21,8 +25,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-// import yosay from 'yosay'
-
 
 var _class = function (_Generator) {
   _inherits(_class, _Generator);
@@ -49,7 +51,7 @@ var _class = function (_Generator) {
     value: function prompting() {
       var _this2 = this;
 
-      // console.log(yosay('Hello, and welcome to my generator!'))
+      console.log((0, _yosay2.default)('Hello, and welcome to chopper!'));
       var prompts = [{
         name: 'name',
         message: 'Module name',
@@ -81,7 +83,11 @@ var _class = function (_Generator) {
     value: function writing() {
       var _this3 = this;
 
-      var tpls = ['.babelrc', '.gitignore', '.editorconfig', 'package.json', 'README.md', 'test/index.test.js', 'src/index.js'];
+      var dottpls = ['babelrc', 'gitignore', 'editorconfig'];
+      var tpls = ['package.json', 'README.md', 'test/index.test.js', 'src/index.js'];
+      dottpls.forEach(function (tpl) {
+        _this3.fs.copyTpl(_this3.templatePath(tpl), _this3.destinationPath('.' + tpl), _this3.props);
+      });
       tpls.forEach(function (tpl) {
         _this3.fs.copyTpl(_this3.templatePath(tpl), _this3.destinationPath(tpl), _this3.props);
       });
@@ -89,7 +95,7 @@ var _class = function (_Generator) {
   }, {
     key: 'install',
     value: function install() {
-      this.installDependencies({ npm: false });
+      this.installDependencies({ npm: true, bower: false });
     }
   }, {
     key: 'end',
