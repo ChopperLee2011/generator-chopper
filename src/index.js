@@ -46,7 +46,12 @@ export default class extends Generator {
 
   writing () {
     const dottpls = ['babelrc', 'gitignore', 'editorconfig']
-    const tpls = ['package.json', 'README.md', 'test/index.test.js', 'src/index.js']
+    const tpls = ['README.md', 'test/index.test.js', 'src/index.js']
+    this.fs.copyTpl(
+      this.templatePath('_package.json'),
+      this.destinationPath(`package.json`),
+      this.props
+    )
     dottpls.forEach(tpl => {
       this.fs.copyTpl(
         this.templatePath(tpl),

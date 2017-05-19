@@ -84,7 +84,8 @@ var _class = function (_Generator) {
       var _this3 = this;
 
       var dottpls = ['babelrc', 'gitignore', 'editorconfig'];
-      var tpls = ['package.json', 'README.md', 'test/index.test.js', 'src/index.js'];
+      var tpls = ['README.md', 'test/index.test.js', 'src/index.js'];
+      this.fs.copyTpl(this.templatePath('_package.json'), this.destinationPath('package.json'), this.props);
       dottpls.forEach(function (tpl) {
         _this3.fs.copyTpl(_this3.templatePath(tpl), _this3.destinationPath('.' + tpl), _this3.props);
       });
